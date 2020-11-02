@@ -437,12 +437,15 @@ Blockly.Arduino.analog_write = function() {
 
 Blockly.Arduino.rgbled = function() {
   var value_red = Blockly.Arduino.valueToCode(this, 'red', Blockly.Arduino.ORDER_ATOMIC);
+  var dropdown_red = this.getFieldValue('RED');
   var value_green = Blockly.Arduino.valueToCode(this, 'green', Blockly.Arduino.ORDER_ATOMIC);
+  var dropdown_green = this.getFieldValue('GREEN');
   var value_blue = Blockly.Arduino.valueToCode(this, 'blue', Blockly.Arduino.ORDER_ATOMIC);
+  var dropdown_blue = this.getFieldValue('BLUE');
   //Blockly.Arduino.setups_['setup_output'+dropdown_pin] = 'pinMode('+dropdown_pin+', OUTPUT);';
-  var code = 'analogWrite(D1, ' + value_red + ');\n' + 
-            'analogWrite(D2, ' + value_green + ');\n' +
-            'analogWrite(D3, ' + value_blue + ');\n'; 
+  var code = 'analogWrite(' + dropdown_red +', ' + value_red + ');\n' + 
+            'analogWrite(' + dropdown_green +', ' + value_green + ');\n' +
+            'analogWrite(' + dropdown_blue +', '+ value_blue + ');\n'; 
   return code;
 };
 

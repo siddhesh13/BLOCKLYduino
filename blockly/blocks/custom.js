@@ -711,18 +711,18 @@ Blockly.Blocks['rgbled'] = {
         .appendField("Set color to RGB Led")
     this.appendDummyInput()
         .appendField(new Blockly.FieldDropdown([["D0", "D0"], ["D1", "D1"], ["D2", "D2"], ["D3", "D3"], ["D4", "D4"],["D5", "D5"],
-        										["D6", "D6"],["D7", "D7"], ["D8", "D8"], ["D9", "D9"], ["D9", "D9"],["D10", "D10"]]), "PIN");
+        										["D6", "D6"],["D7", "D7"], ["D8", "D8"], ["D9", "D9"], ["D9", "D9"],["D10", "D10"]]), "RED");
 		
     this.appendValueInput("red")
         .setCheck("Number");
     this.appendDummyInput()
         .appendField(new Blockly.FieldDropdown([["D0", "D0"], ["D1", "D1"], ["D2", "D2"], ["D3", "D3"], ["D4", "D4"],["D5", "D5"],
-        										["D6", "D6"],["D7", "D7"], ["D8", "D8"], ["D9", "D9"], ["D9", "D9"],["D10", "D10"]]), "PIN");
+        										["D6", "D6"],["D7", "D7"], ["D8", "D8"], ["D9", "D9"], ["D9", "D9"],["D10", "D10"]]), "GREEN");
     this.appendValueInput("green")
         .setCheck("Number");
     this.appendDummyInput()
         .appendField(new Blockly.FieldDropdown([["D0", "D0"], ["D1", "D1"], ["D2", "D2"], ["D3", "D3"], ["D4", "D4"],["D5", "D5"],
-        										["D6", "D6"],["D7", "D7"], ["D8", "D8"], ["D9", "D9"], ["D9", "D9"],["D10", "D10"]]), "PIN");
+        										["D6", "D6"],["D7", "D7"], ["D8", "D8"], ["D9", "D9"], ["D9", "D9"],["D10", "D10"]]), "BLUE");
     this.appendValueInput("blue")
         .setCheck("Number");
     this.setInputsInline(true);
