@@ -477,7 +477,7 @@ Blockly.Blocks['rightJoystick1'] = {
 init: function() {
     this.setColour(345);
     this.appendDummyInput()
-      .appendField("Right Joystick")
+      .appendField("Right Joystick 1")
     this.setOutput(true, "Number")
     //this.setInputsInline(true);
     //this.setPreviousStatement(true, null);
@@ -490,7 +490,7 @@ Blockly.Blocks['leftJoystick1'] = {
 init: function() {
     this.setColour(345);
     this.appendDummyInput()
-      .appendField("Left Joystick")
+      .appendField("Left Joystick 1")
     this.setOutput(true, "Number")
     //this.setInputsInline(true);
     //this.setPreviousStatement(true, null);
@@ -503,7 +503,7 @@ Blockly.Blocks['rightJoystick2'] = {
 init: function() {
     this.setColour(345);
     this.appendDummyInput()
-      .appendField("Right Joystick")
+      .appendField("Right Joystick 2")
     this.setOutput(true, "Number")
     //this.setInputsInline(true);
     //this.setPreviousStatement(true, null);
@@ -516,7 +516,7 @@ Blockly.Blocks['leftJoystick2'] = {
 init: function() {
     this.setColour(345);
     this.appendDummyInput()
-      .appendField("Left Joystick")
+      .appendField("Left Joystick 2")
     this.setOutput(true, "Number")
     //this.setInputsInline(true);
     //this.setPreviousStatement(true, null);

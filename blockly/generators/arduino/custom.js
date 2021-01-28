@@ -149,12 +149,12 @@ Blockly.Arduino.rightJoystick2 = function() {
 };
 
 Blockly.Arduino.leftJoystick1 = function() {     
-    code = ' packetBuffer[3]';
+    code = ' packetBuffer[2]';
   return [code, Blockly.Arduino.ORDER_NONE];
 };
 
 Blockly.Arduino.leftJoystick2 = function() {     
-    code = ' packetBuffer[2]';
+    code = ' packetBuffer[3]';
   return [code, Blockly.Arduino.ORDER_NONE];
 };
 
