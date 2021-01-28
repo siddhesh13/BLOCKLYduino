@@ -78,6 +78,103 @@ Blockly.Arduino['wifi_connected'] = function() {
   return "";
 };
 
+//udp code
+Blockly.Arduino['udp_begin'] = function() {
+  var includeString = "#include <ESP8266WiFi.h>\n#include <WiFiClient.h>\n#include <WiFiUDP.h>";
+  Blockly.Arduino.definitions_.define_wifi_include = includeString;
+  var wifi_instance = "WiFiUDP UDP;\n\nboolean wifiConnected = true;\nboolean udpConnected = false;\n\nchar packetBuffer[UDP_TX_PACKET_MAX_SIZE];//buffer to hold incoming packet,\n\n";
+  Blockly.Arduino.definitions_.define_wifi_instance = wifi_instance;
+  var wifi_name = Blockly.Arduino.valueToCode(this, 'WiFi_NAME', Blockly.Arduino.ORDER_ATOMIC);
+  var wifi_password = Blockly.Arduino.valueToCode(this, 'WiFi_PASSWORD', Blockly.Arduino.ORDER_ATOMIC);
+  Blockly.Arduino.definitions_.wifiName='const char* wifi_ssid = '+wifi_name+';';
+  Blockly.Arduino.definitions_.wifiPass='const char* wifi_password = '+wifi_password+';\n'; 
+  var port = Blockly.Arduino.valueToCode(this, 'udp_port', Blockly.Arduino.ORDER_ATOMIC);
+  Blockly.Arduino.definitions_.udpPort='unsigned int localPort = '+port+';\n';
+  Blockly.Arduino.setups_['serial_begin_setup'] = "Serial.begin(115200);\n" + "WiFi.softAP(wifi_ssid, wifi_password);\n// only proceed if wifi connection successful\n" +
+  "if (wifiConnected) {\n" +  "   udpConnected = connectUDP();\n" + "   if (udpConnected) {\n" + '    Serial.print("UDP Connected. Ready to go....");\n' + '  }\n }';
+   Blockly.Arduino.definitions_['define_connectUDP'] = 'boolean connectUDP()\n' +
+    '{\n' +
+       '  boolean state = false;\n' +
+       '  Serial.println("");\n' + 
+       '  Serial.println("Connecting to UDP");\n\n' +
+       '  if (UDP.begin(localPort) == 1) {\n' + 
+       '    Serial.println("Connection successful");\n' +
+       '    state = true;\n' +
+       '  }\n' +
+       '  else {\n' +
+       '    Serial.println("Connection failed");\n' +
+       '  }\n' + 
+     '  }\n\n'; 
+
+  
+Blockly.Arduino.definitions_['define_connectWifi'] = 'boolean connectWifi()\n' +
+    '{\n' +
+       '  boolean state = true;\n' +
+       '  int i = 0;\n' + 
+       '  WiFi.begin(wifi_ssid, wifi_password);\n\n' +
+       '  Serial.println("");\n' + 
+       '  Serial.println("Connecting to WiFi");\n' +
+       '  while (WiFi.status() != WL_CONNECTED) {\n' +
+       '    delay(500);\n' +
+       '    Serial.print(".");\n' +
+       '    if (i > 10) {\n' +
+       '    state = false;\n' + 
+       '    break;\n' + 
+       '  }\n' + 
+       '  i++;\n' +
+       ' }\n' +
+       '  if (state) {\n' +
+       '    Serial.println("");\n' + 
+       '    Serial.println(WiFi.localIP());\n' +
+       '  }\n' +
+       '  else {\n' +
+       '    Serial.println("");\n' +
+       '    Serial.println("Connection failed.");\n' +
+       '  }\n\n' + 
+     '}\n\n';   
+  return "";
+  
+};
+
+  
+
+Blockly.Arduino.rightJoystick1 = function() {     
+    code = ' packetBuffer[0]';
+  return [code, Blockly.Arduino.ORDER_NONE];
+};
+
+Blockly.Arduino.rightJoystick2 = function() {     
+    code = ' packetBuffer[1]';
+  return [code, Blockly.Arduino.ORDER_NONE];
+};
+
+Blockly.Arduino.leftJoystick1 = function() {     
+    code = ' packetBuffer[3]';
+  return [code, Blockly.Arduino.ORDER_NONE];
+};
+
+Blockly.Arduino.leftJoystick2 = function() {     
+    code = ' packetBuffer[2]';
+  return [code, Blockly.Arduino.ORDER_NONE];
+};
+
+Blockly.Arduino["run_udp"]=function()
+{
+  return " if (wifiConnected) {\n" +
+  '  if (udpConnected) {\n\n' +
+  '  // if there’s data available, read a packet\n' +
+  '  int packetSize = UDP.parsePacket();\n' +
+  '  if (packetSize)\n' +
+  '    {\n' +
+  '    // read the packet into packetBufffer\n' +
+  '    UDP.read(packetBuffer, UDP_TX_PACKET_MAX_SIZE);\n' +
+  '    Serial.println("Contents:");\n';
+};
+
+Blockly.Arduino["stop_udp"]=function()
+{
+  return "  }\n }\n}"; 
+};
 //ifttt code
 Blockly.Arduino['connect_ifttt'] = function() {
 

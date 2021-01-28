@@ -424,6 +424,107 @@ Blockly.Blocks["wifi_connected"]={
   }
 };
 
+// udp block
+Blockly.Blocks['udp_begin'] = {
+  init: function() {  
+    this.appendDummyInput().appendField('UDP begin')
+    this.appendValueInput('WiFi_NAME')
+      .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField('WiFi Name');
+    this.appendValueInput('WiFi_PASSWORD')
+      .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField('Password')  
+    this.appendValueInput('udp_port', 'Number')
+      .setCheck('Number')
+      .setAlign(Blockly.ALIGN_RIGHT)
+    .appendField('UDP Port');  
+  //this.appendDummyInput().appendField("Set Font");  
+  this.setPreviousStatement(true);
+  this.setNextStatement(true);
+    this.setColour(345);
+  this.setTooltip('Connect to UDP.');
+  }
+}
+
+Blockly.Blocks['run_udp'] = {
+init: function() {
+    this.setColour(345);
+    this.appendDummyInput()
+      .appendField("Connect to UDP server")
+    //this.setOutput(true, "Number")
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip('Recieve data from UDP server.');
+  }
+};
+
+Blockly.Blocks['stop_udp'] = {
+init: function() {
+    this.setColour(345);
+    this.appendDummyInput()
+      .appendField("Recieve data")
+    //this.setOutput(true, "Number")
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setTooltip('Recieve data from UDP server.');
+  }
+};
+
+
+Blockly.Blocks['rightJoystick1'] = {
+init: function() {
+    this.setColour(345);
+    this.appendDummyInput()
+      .appendField("Right Joystick")
+    this.setOutput(true, "Number")
+    //this.setInputsInline(true);
+    //this.setPreviousStatement(true, null);
+    //this.setNextStatement(true, null);
+    this.setTooltip('Recieve data from Right Joystick.');
+  }
+};
+
+Blockly.Blocks['leftJoystick1'] = {
+init: function() {
+    this.setColour(345);
+    this.appendDummyInput()
+      .appendField("Left Joystick")
+    this.setOutput(true, "Number")
+    //this.setInputsInline(true);
+    //this.setPreviousStatement(true, null);
+    //this.setNextStatement(true, null);
+    this.setTooltip('Recieve data from Left Joystick.');
+  }
+};
+
+Blockly.Blocks['rightJoystick2'] = {
+init: function() {
+    this.setColour(345);
+    this.appendDummyInput()
+      .appendField("Right Joystick")
+    this.setOutput(true, "Number")
+    //this.setInputsInline(true);
+    //this.setPreviousStatement(true, null);
+    //this.setNextStatement(true, null);
+    this.setTooltip('Recieve data from Right Joystick.');
+  }
+};
+
+Blockly.Blocks['leftJoystick2'] = {
+init: function() {
+    this.setColour(345);
+    this.appendDummyInput()
+      .appendField("Left Joystick")
+    this.setOutput(true, "Number")
+    //this.setInputsInline(true);
+    //this.setPreviousStatement(true, null);
+    //this.setNextStatement(true, null);
+    this.setTooltip('Recieve data from Left Joystick.');
+  }
+};
+
 // ifttt block
 Blockly.Blocks['connect_ifttt'] = {
   init: function() {  
